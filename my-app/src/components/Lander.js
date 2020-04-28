@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {connect} from 'react-redux';
 import {NasaCaller} from '../actions/NasaCaller';
+import Details from './Details';
 
 
 const dataProps = state => ({
@@ -10,7 +11,6 @@ const dataProps = state => ({
 
 const Lander = (props) => {
     const [apiReq, setApiReq] = useState({}); // this is empty
-    const [res, setRes] = useState({}); // 
 
 
     const handleSubmit = e =>{
@@ -19,25 +19,32 @@ const Lander = (props) => {
     }
 
     const handleChange = e => {
-        setApiReq({...apiReq,
+        setApiReq({
           [e.target.name]:e.target.value
         })
         
     }
-    
+    console.log(props)
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type='date' 
-                    id='picker'
-                    name = 'date'
-                    min='1970-01-01'
-                    onChange={handleChange}
-                />
-                <button type='submit'>Save</button>
-            </form>
-            {console.log(props.data)}
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <input type='date' 
+                        id='picker'
+                        name = 'date'
+                        min='1970-01-01'
+                        onChange={handleChange}
+                    />
+                    <button type='submit'>Save</button>
+                </form>
+            </div>
+            <Details 
+                title={props.data.title}
+                date={props.data.date}
+                image={props.data.url}  
+                explanation={props.data.explanation}
+            />
         </div>
     );
 }
