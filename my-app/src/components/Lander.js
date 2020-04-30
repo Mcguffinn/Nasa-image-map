@@ -10,7 +10,7 @@ const dataProps = state => ({
 })
 
 const Lander = (props) => {
-    const [apiReq, setApiReq] = useState({}); // this is empty
+    const [apiReq, setApiReq] = useState({});
 
 
     const handleSubmit = e =>{
@@ -24,11 +24,10 @@ const Lander = (props) => {
         })
         
     }
-    console.log(props)
 
     return (
         <div>
-            <div>
+            <div className='calendar'>
                 <form onSubmit={handleSubmit}>
                     <input type='date' 
                         id='picker'
@@ -49,4 +48,4 @@ const Lander = (props) => {
     );
 }
 
-export default connect(dataProps, {NasaCaller})(Lander) // 
+export default connect(dataProps, {NasaCaller})(Lander)
