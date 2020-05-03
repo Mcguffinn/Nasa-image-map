@@ -9,9 +9,9 @@ const dataProps = state => ({
     error: state.data
 })
 
+
 const Lander = (props) => {
     const [apiReq, setApiReq] = useState({});
-
 
     const handleSubmit = e =>{
         e.preventDefault()
@@ -26,18 +26,24 @@ const Lander = (props) => {
     }
 
     return (
-        <div>
-            <div className='calendar'>
-                <form onSubmit={handleSubmit}>
-                    <input type='date' 
-                        id='picker'
-                        name = 'date'
-                        min='1970-01-01'
-                        onChange={handleChange}
-                    />
-                    <button type='submit'>Save</button>
-                </form>
-            </div>
+        <div className="hero-image">
+            <img src = {props.image} alt={props.title}/> 
+            <section className="masthead" role="img" aria-label="Image Description">
+                <h1>
+                    Call to the Stars
+                </h1>
+                <div className='calendar'>
+                    <form onSubmit={handleSubmit}>
+                        <input type='date' 
+                            id='picker'
+                            name = 'date'
+                            min='1970-01-01'
+                            onChange={handleChange}
+                        />
+                        <button type='submit'>Save</button>
+                    </form>
+                </div>
+            </section>
             <Details 
                 title={props.data.title}
                 date={props.data.date}
@@ -45,6 +51,7 @@ const Lander = (props) => {
                 explanation={props.data.explanation}
             />
         </div>
+        
     );
 }
 
